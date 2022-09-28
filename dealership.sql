@@ -1,16 +1,21 @@
---Open the database with columns and headers turned on like so:
---sqlite3 -header -column  dealership.db
---Read the database file using:
---sqlite3 dealership.db ".read dealership.sql"
+-- Open the database with columns and headers turned on like so:
+-- sqlite3 -header -column  dealership.db
+-- Read the database file using:
+-- sqlite3 dealership.db ".read dealership.sql"
 
+-- Turn on foreign keys
 PRAGMA foreign_keys = ON;
+
+DROP TRIGGER validate_sale_role_insert;
+DROP TRIGGER validate_sale_role_update;
+DROP TRIGGER validate_service_role_insert;
+DROP TRIGGER validate_service_role_update;
 DROP TABLE service;
 DROP TABLE sale;
 DROP TABLE customer;
 DROP TABLE vehicle;
 DROP TABLE employee;
 DROP TABLE dealership;
--- DROP TRIGGER validate_sale_role;
 
 CREATE TABLE dealership (
     dealership_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -32,6 +37,7 @@ CREATE TABLE employee (
     FOREIGN KEY(dealership_id) REFERENCES dealership(dealership_id),
     CHECK(employee_role IN ("Salesperson", "Manager", "Mechanic"))
 );
+
 CREATE TABLE vehicle (
     vin INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     dealership_id INTEGER NOT NULL,
@@ -42,6 +48,7 @@ CREATE TABLE vehicle (
     msrp REAL,
     FOREIGN KEY(dealership_id) REFERENCES dealership(dealership_id)
 );
+
 CREATE TABLE customer (
     customer_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     customer_fname TEXT NOT NULL,
@@ -49,6 +56,7 @@ CREATE TABLE customer (
     customer_email TEXT NOT NULL UNIQUE,
     customer_phone TEXT
 );
+
 CREATE TABLE sale (
     sale_num INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     vin INTEGER NOT NULL UNIQUE,
