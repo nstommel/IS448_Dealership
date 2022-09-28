@@ -1,0 +1,45 @@
+.tab-content .tab-content{
+    /*Scroll only the tab content.*/
+    overflow: auto;  
+    /*This way, height is defined for the tab scrolling content*/
+    height: calc(100vh - 155px);
+}
+.nav-tabs .nav-item .nav-link {
+    color: #007bff;
+    background-color: white;
+    border: 0px;
+}
+.nav-tabs .nav-item .nav-link.active {
+    color: white;
+    border: 0px;                
+    background-color: #007bff;
+}
+.nav-tabs .nav-item .nav-link:hover {
+    color: white;
+    background-color: #007bff;
+    border: 0px;                
+}
+.nav-tabs > li > a {             
+    margin-right: 3px;
+}
+.nav-pills .nav-link {                
+    margin-bottom: 3px;
+}
+.nav-pills .nav-link:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;                
+}
+.card .card-header {
+    background-color: #343a40;
+    color: white;
+}
+.nav-tabs {
+    border-bottom-color: transparent;
+}
+.nav-tabs .nav-item:first-child {
+    margin-left: 10px;
+}
+.tab-pane > .tab-content {
+    border-radius: 10px 10px 10px 10px;
+}
