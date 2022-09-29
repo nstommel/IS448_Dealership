@@ -20,6 +20,7 @@ if(empty($_SESSION['employeeID'])){
         <script src="customer/customer.js"></script>
         <script src="employee/employee.js"></script>
         <script src="vehicle/vehicle.js"></script>
+        <script src="dealership/dealership.js"></script>
         <style>            
             /*Additional test styles go here*/
         </style>
@@ -570,8 +571,31 @@ if(empty($_SESSION['employeeID'])){
                                 <div class="tab-pane fade" id="dealershipTab4">
                                     <h5>Find a dealership:</h5>
                                 </div>
-                                <div class="tab-pane fade" id="dealershipTab5">
-                                    <h5>Show all dealerships:</h5>
+                                <div class="tab-pane fade" id="dealershipTab5">                                    
+                                    <form class="form-inline" id="dealershipOrderBy" action="javascript:void(0)" onsubmit="showAllDealerships()">                                    
+                                        <div class="form-group mr-2">
+                                            <label for="orderByDealership">Select order to display results:</label>
+                                        </div>
+                                        <div class="form-group mr-2">
+                                            <!--dealership_id, dealership_name, dealership_city, dealership_state, dealership_phone-->
+                                            <select class="form-control" name="orderByDealership" id="orderByDealership">
+                                                <option value="dealership_id asc" selected>Dealership ID # Ascending</option>
+                                                <option value="dealership_id desc">Dealership ID # Descending</option>                                                
+                                                <option value="dealership_name collate nocase asc">Dealership Name Ascending</option>
+                                                <option value="dealership_name collate nocase desc">Dealership Name Descending</option>
+                                                <option value="dealership_city collate nocase asc">Dealership City Ascending</option>
+                                                <option value="dealership_city collate nocase desc">Dealership City Descending</option>
+                                                <option value="dealership_state collate nocase asc">Dealership State Ascending</option>
+                                                <option value="dealership_state collate nocase desc">Dealership State Descending</option>
+                                                <option value="dealership_phone asc">Dealership Phone Ascending</option>
+                                                <option value="dealership_phone desc">Dealership Phone Descending</option>                                                
+                                            </select>
+                                        </div>
+                                        <div class ="form-group">
+                                            <input type="submit" class="btn btn-primary" name="submit" value="Refresh Display" />
+                                        </div>
+                                    </form>                                    
+                                    <div id="allDealershipsTable"></div>                                    
                                 </div>
                             </div>
                         </div>
@@ -649,13 +673,20 @@ if(empty($_SESSION['employeeID'])){
                     console.log("refreshing table");
                     showAllVehicles();
                 });
+                $("#dealershipTabs li:nth-child(5) a").on("click", function() {
+                    console.log("refreshing table");
+                    showAllDealerships();
+                });
                 //The following line shows syntax for checking the box
                 //$("#insertEmployeeRoleRadio input[name=employeeRole][value='Mechanic']").prop("checked",true);
+                //Log value when the radio input is checked on the insert employee tab
                 $("#insertEmployeeRoleRadio input").on("click", function() {
-                    console.log( $( "#insertEmployeeRoleRadio input:checked" ).val() + " is checked!" );
+                    console.log($("#insertEmployeeRoleRadio input:checked").val() + " is checked!" );
+                });
+                $("#updateEmployeeRoleRadio input").on("click", function() {
+                    console.log($("#updateEmployeeRoleRadio input:checked").val() + " is checked!" );
                 });
             });
-            
             
             
         </script>
