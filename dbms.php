@@ -21,6 +21,7 @@ if(empty($_SESSION['employeeID'])){
         <script src="employee/employee.js"></script>
         <script src="vehicle/vehicle.js"></script>
         <script src="dealership/dealership.js"></script>
+        <script src="sale/sale.js"></script>
         <style>            
             /*Additional test styles go here*/
         </style>
@@ -621,7 +622,32 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Find a sales order:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab5">
-                                    <h5>Show all sales orders:</h5>
+                                    <form class="form-inline" id="saleOrderBy" action="javascript:void(0)" onsubmit="showAllSales()">
+                                        <div class="form-group mr-2">
+                                            <label for="orderBySale">Select order to display results:</label>
+                                        </div>
+                                        <div class="form-group mr-2">
+                                            <!--sale_num, vin, employee_id, customer_id, sale_date, sale_amount-->
+                                            <select class="form-control" name="orderBySale" id="orderBySale">
+                                                <option value="sale_num asc" selected>Sale # Ascending</option>
+                                                <option value="sale_num desc">Sale # Descending</option>                                                
+                                                <option value="vin asc">VIN Ascending</option>
+                                                <option value="vin desc">VIN Descending</option>
+                                                <option value="employee_id asc">Employee ID Ascending</option>
+                                                <option value="employee_id desc">Employee ID Descending</option>
+                                                <option value="customer_id asc">Customer ID Ascending</option>
+                                                <option value="customer_id desc">Customer ID Descending</option>
+                                                <option value="sale_date asc">Sale Date Ascending</option>
+                                                <option value="sale_date desc">Sale Date Descending</option>
+                                                <option value="sale_amount asc">Sale Amount Ascending</option>
+                                                <option value="sale_amount desc">Sale Amount Descending</option>                                                
+                                            </select>
+                                        </div>
+                                        <div class ="form-group">
+                                            <input type="submit" class="btn btn-primary" name="submit" value="Refresh Display" />
+                                        </div>
+                                    </form>
+                                    <div id="allSalesTable"></div> 
                                 </div>
                             </div>
                         </div>
@@ -676,6 +702,10 @@ if(empty($_SESSION['employeeID'])){
                 $("#dealershipTabs li:nth-child(5) a").on("click", function() {
                     console.log("refreshing table");
                     showAllDealerships();
+                });
+                $("#saleTabs li:nth-child(5) a").on("click", function() {
+                    console.log("refreshing table");
+                    showAllSales();
                 });
                 //The following line shows syntax for checking the box
                 //$("#insertEmployeeRoleRadio input[name=employeeRole][value='Mechanic']").prop("checked",true);
