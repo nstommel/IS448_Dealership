@@ -25,6 +25,7 @@ if(empty($_SESSION['employeeID'])){
         <script src="vehicle/vehicle.js"></script>
         <script src="dealership/dealership.js"></script>
         <script src="sale/sale.js"></script>
+        <script src="service/service.js"></script>
         <style>            
             /*Additional test styles go here*/
         </style>
@@ -650,7 +651,7 @@ if(empty($_SESSION['employeeID'])){
                                             <input type="submit" class="btn btn-primary" name="submit" value="Refresh Display" />
                                         </div>
                                     </form>
-                                    <div id="allSalesTable"></div> 
+                                    <div id="allSalesTable"></div>
                                 </div>
                             </div>
                         </div>
@@ -675,8 +676,35 @@ if(empty($_SESSION['employeeID'])){
                                 <div class="tab-pane fade" id="serviceTab4">
                                     <h5>Find a service job:</h5>
                                 </div>
-                                <div class="tab-pane fade" id="serviceTab5">
-                                    <h5>Show all service jobs:</h5>
+                                <div class="tab-pane fade" id="serviceTab5">                                    
+                                    <form class="form-inline" id="serviceOrderBy" action="javascript:void(0)" onsubmit="showAllServices()">
+                                        <div class="form-group mr-2">
+                                            <label for="orderByService">Select order to display results:</label>
+                                        </div>
+                                        <div class="form-group mr-2">
+                                            <!--service_num, vin, employee_id, customer_id, dealership_id, service_date, service_cost-->
+                                            <select class="form-control" name="orderByService" id="orderByService">
+                                                <option value="service_num asc" selected>Service # Ascending</option>
+                                                <option value="service_num desc">Service # Descending</option>                                                
+                                                <option value="vin asc">VIN Ascending</option>
+                                                <option value="vin desc">VIN Descending</option>
+                                                <option value="employee_id asc">Employee ID Ascending</option>
+                                                <option value="employee_id desc">Employee ID Descending</option>
+                                                <option value="customer_id asc">Customer ID Ascending</option>
+                                                <option value="customer_id desc">Customer ID Descending</option>
+                                                <option value="dealership_id asc">Dealership ID Ascending</option>
+                                                <option value="dealership_id desc">Dealership ID Descending</option>
+                                                <option value="service_date asc">Service Date Ascending</option>
+                                                <option value="service_date desc">Service Date Descending</option>
+                                                <option value="service_cost asc">Service Cost Ascending</option>
+                                                <option value="service_cost desc">Service Cost Descending</option>                                                
+                                            </select>
+                                        </div>
+                                        <div class ="form-group">
+                                            <input type="submit" class="btn btn-primary" name="submit" value="Refresh Display" />
+                                        </div>
+                                    </form>
+                                    <div id="allServicesTable"></div>
                                 </div>
                             </div>
                         </div>
@@ -686,31 +714,34 @@ if(empty($_SESSION['employeeID'])){
         <script>
             $(document).ready(function(){                
                 $("#customerTabs li:nth-child(5) a").on("click", function() {
-                    console.log("refreshing table");
+                    console.log("refreshing customer table on tab click");
                     showAllCustomers();
                 });
                 $("#employeeTabs li:nth-child(5) a").on("click", function() {
-                    console.log("refreshing table");
+                    console.log("refreshing employee table on tab click");
                     showAllEmployees();
                 });
                 $("#vehicleTabs li:nth-child(5) a").on("click", function() {
-                    console.log("refreshing table");
+                    console.log("refreshing vehicle table on tab click");
                     showAllVehicles();
                 });
                 $("#dealershipTabs li:nth-child(5) a").on("click", function() {
-                    console.log("refreshing table");
+                    console.log("refreshing dealership table on tab click");
                     showAllDealerships();
                 });
                 $("#saleTabs li:nth-child(5) a").on("click", function() {
-                    console.log("refreshing table");
+                    console.log("refreshing sale table on tab click");
                     showAllSales();
                 });
-                //The following line shows syntax for checking the box
-                //$("#insertEmployeeRoleRadio input[name=employeeRole][value='Mechanic']").prop("checked",true);
-                //Log value when the radio input is checked on the insert employee tab
+                $("#serviceTabs li:nth-child(5) a").on("click", function() {
+                    console.log("refreshing service table on tab click");
+                    showAllServices();
+                });                
+                // Log value when the radio input is checked on the insert employee tab.
                 $("#insertEmployeeRoleRadio input").on("click", function() {
                     console.log($("#insertEmployeeRoleRadio input:checked").val() + " is checked!" );
                 });
+                // Log value when the radio input is checked on the update employee tab.
                 $("#updateEmployeeRoleRadio input").on("click", function() {
                     console.log($("#updateEmployeeRoleRadio input:checked").val() + " is checked!" );
                 });
