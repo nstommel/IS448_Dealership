@@ -2,7 +2,6 @@
 $db = new SQLite3("../dealership.db");
 $db->exec("PRAGMA foreign_keys = ON");
 
-$id = $_POST["dealershipID"];
 $model = trim($_POST["vehicleModel"]);
 $year = $_POST["vehicleYear"];
 $brand = trim($_POST["vehicleBrand"]);
@@ -13,8 +12,8 @@ $msrp = str_replace('$', '', $_POST["vehicleMSRP"]);
 $db->enableExceptions(true);
 try {
     //Attempt insert into database
-    $db->exec('INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)' 
-                . 'VALUES(' . $id . ', "' . $model . '", ' . $year . ', "' . $brand . '", "' 
+    $db->exec('INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)' 
+                . 'VALUES("' . $model . '", ' . $year . ', "' . $brand . '", "' 
                 . $color . '", ' . $msrp . ')');
     echo "Successfully inserted into database, assigned vehicle ID #: " . $db->lastinsertRowID();
     $db->close();

@@ -21,18 +21,16 @@ try {
                     <div class='card-body'>                                                                                    
                         <table class='table table-striped'>
                             <tr>
-                            <th>Vehicle ID #</th>
-                            <th>Dealership ID #</th>
-                            <th>Model Name</th>
-                            <th>Model Year</th>
-                            <th>Brand Name</th>
-                            <th>Color</th>
-                            <th>MSRP</th>
+                                <th>Vehicle ID #</th>
+                                <th>Model Name</th>
+                                <th>Model Year</th>
+                                <th>Brand Name</th>
+                                <th>Color</th>
+                                <th>MSRP</th>
                             </tr>";
         while ($row = $result->fetchArray()) {
             echo            "<tr>
                                 <td>" . $row["vin"] . "</td>
-                                <td>" . $row["dealership_id"] . "</td>    
                                 <td>" . htmlspecialchars($row["model_name"]) . "</td>
                                 <td>" . htmlspecialchars($row["model_year"]) . "</td>
                                 <td>" . htmlspecialchars($row["brand_name"]) . "</td>

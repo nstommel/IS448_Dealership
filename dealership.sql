@@ -40,13 +40,11 @@ CREATE TABLE employee (
 
 CREATE TABLE vehicle (
     vin INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    dealership_id INTEGER NOT NULL,
     model_name TEXT,
     model_year INTEGER,
     brand_name TEXT,
     color TEXT,
-    msrp REAL,
-    FOREIGN KEY(dealership_id) REFERENCES dealership(dealership_id)
+    msrp REAL
 );
 
 CREATE TABLE customer (
@@ -62,11 +60,13 @@ CREATE TABLE sale (
     vin INTEGER NOT NULL UNIQUE,
     employee_id INTEGER NOT NULL,
     customer_id INTEGER NOT NULL,
+    dealership_id INTEGER NOT NULL,
     sale_date TEXT,
     sale_cost REAL,
     FOREIGN KEY(vin) REFERENCES vehicle(vin),
     FOREIGN KEY(employee_id) REFERENCES employee(employee_id),
-    FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+    FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+    FOREIGN KEY(dealership_id) REFERENCES dealership(dealership_id)
 );
 
 -- This trigger prevents sales from being associated with employees without the
@@ -139,16 +139,16 @@ INSERT INTO employee (dealership_id, employee_fname, employee_lname, employee_em
 INSERT INTO employee (dealership_id, employee_fname, employee_lname, employee_email, employee_phone, employee_role, employee_password)
     VALUES (1, "Jordan", "Brown", "jordanbrown@qc.com", "443-907-2134", "Salesperson", "1234");
 
-INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)
-    VALUES (2, "Accord", 2022, "Honda", "white", 19000);
-INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)
-    VALUES (3, "Civic", 2021, "Honda", "black", 25000);
-INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)
-    VALUES (1, "Camry", 2022, "Toyota", "blue", 28000);
-INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)
-    VALUES (3, "Highlander", 2021, "Toyota", "green", 35000);
-INSERT INTO vehicle (dealership_id, model_name, model_year, brand_name, color, msrp)
-    VALUES (3, "Highlander", 2022, "Toyota", "red", 36000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Accord", 2022, "Honda", "white", 19000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Civic", 2021, "Honda", "black", 25000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Camry", 2022, "Toyota", "blue", 28000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Highlander", 2021, "Toyota", "green", 35000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Highlander", 2022, "Toyota", "red", 36000);
 
 INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_phone)
     VALUES ("Ron", "Baker", "rbaker@gmail.com", "902-113-2981");
@@ -160,17 +160,19 @@ INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_p
     VALUES ("Carlos", "Garcia", "cgarcia@yahoo.com", "802-332-8124");
 INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_phone)
     VALUES("John", "Anderson", "janderson@outlook.com", "422-470-1238");
- 
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
-    VALUES (1, 3, 1, "01/20/22", 21000.75);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
-    VALUES (2, 8, 1, "03/20/22", 27000.25);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
-    VALUES (3, 3, 2, "04/20/22", 30000.50);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
-    VALUES (4, 6, 4, "03/25/22", 27000.75);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
-   VALUES (5, 8, 2, "03/20/22", 28000.25);
+
+-- For sales, the location of the sale is determined by the dealership id
+
+INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+    VALUES (1, 3, 1, 2, "01/20/22", 21000.75);
+INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+    VALUES (2, 8, 1, 3, "03/20/22", 27000.25);
+INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+    VALUES (3, 3, 2, 1, "04/20/22", 30000.50);
+INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+    VALUES (4, 6, 4, 3, "03/25/22", 27000.75);
+INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+    VALUES (5, 8, 2, 3, "03/20/22", 28000.25);
 
 -- Test insert trigger on sale table with employee that is not Salesperson
 -- INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
@@ -179,23 +181,11 @@ INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
 -- Test update trigger on sale table with employee that is not Salesperson
 -- UPDATE sale SET employee_id = 1 WHERE sale_num = 3;
 
--- To see the dealership location where cars were offered vs employee dealership location 
--- affiliatiated with sales, use this query. A trigger might be used to enforce that employees 
--- who sell cars must be located at the dealership of origin associated with the vehicle, but 
--- this is not necessarily useful because employees could temporarily relocate to other
--- dealerships. The dealership_id of the vehicle should be changed by 
--- users in the database should the car be transferred to a different dealership before sale.
--- Thus, dealership_id in the vehicle table determines the sale location and including
--- a dealership_id in the sale table is unneccessary. Including it in the vehicle
--- table brings the benefit of knowing the dealership location where an unsold car is offered.
--- select sale_num, sale.vin, employee.dealership_id as employee_location, 
--- vehicle.dealership_id as sale_location, dealership_name as sale_dealership_name
--- from sale, employee, vehicle, dealership 
--- where sale.employee_id = employee.employee_id 
--- and sale.vin = vehicle.vin
--- and dealership.dealership_id = vehicle.dealership_id;
+-- A trigger might be used to enforce that employees who sell cars must be located 
+-- at the dealership of origin associated with the vehicle, but this is not necessarily 
+-- useful because employees could temporarily relocate to other dealerships.
 
--- For services, the location of the service is determined in the service record
+-- For services, the location of the service is determined by the dealership id
 -- because a customer could take the car to different service locations after purchase.
 
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
@@ -215,3 +205,5 @@ INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date,
 
 -- Test update trigger on service table with employee that is not a Mechanic
 -- UPDATE service SET employee_id = 1 WHERE service_num = 3;
+
+-- !!!Perhaps create a vehicle_stock table to include records of dealership vehicle orders and to which dealership they are being offered

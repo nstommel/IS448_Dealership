@@ -476,12 +476,6 @@ if(empty($_SESSION['employeeID'])){
                                         <!--<form class="card-body was-validated" action="vehicle/insertVehicle.php" method="post" id="insertVehicleForm">-->
                                         <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertVehicleForm" onsubmit="insertVehicle()">
                                             <div class="form-group">
-                                                <label class="font-weight-bold" for="insertVehicleDealershipID">Dealership ID #</label>
-                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="insertVehicleDealershipID" name="dealershipID" required />
-                                                <div class="valid-feedback">Dealership ID looks good.</div>
-                                                <div class="invalid-feedback">Please enter a valid integer dealership ID.</div>
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="insertVehicleModel">Vehicle Model Name:</label>
                                                 <input type="text" class="form-control" placeholder="Enter first name" id="insertVehicleModel" name="vehicleModel" required />
                                                 <div class="valid-feedback">Model name looks good.</div>
@@ -631,7 +625,7 @@ if(empty($_SESSION['employeeID'])){
                                             <label for="orderBySale">Select order to display results:</label>
                                         </div>
                                         <div class="form-group mr-2">
-                                            <!--sale_num, vin, employee_id, customer_id, sale_date, sale_cost-->
+                                            <!--sale_num, vin, employee_id, customer_id, dealership_id, sale_date, sale_cost-->
                                             <select class="form-control" name="orderBySale" id="orderBySale">
                                                 <option value="sale_num asc" selected>Sale # Ascending</option>
                                                 <option value="sale_num desc">Sale # Descending</option>                                                
@@ -641,6 +635,8 @@ if(empty($_SESSION['employeeID'])){
                                                 <option value="employee_id desc">Employee ID Descending</option>
                                                 <option value="customer_id asc">Customer ID Ascending</option>
                                                 <option value="customer_id desc">Customer ID Descending</option>
+                                                <option value="dealership_id asc">Dealership ID Ascending</option>
+                                                <option value="dealership_id desc">Dealership ID Descending</option>
                                                 <option value="sale_date asc">Sale Date Ascending</option>
                                                 <option value="sale_date desc">Sale Date Descending</option>
                                                 <option value="sale_cost asc">Sale Cost Ascending</option>
