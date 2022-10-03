@@ -63,7 +63,7 @@ CREATE TABLE sale (
     employee_id INTEGER NOT NULL,
     customer_id INTEGER NOT NULL,
     sale_date TEXT,
-    sale_amount REAL,
+    sale_cost REAL,
     FOREIGN KEY(vin) REFERENCES vehicle(vin),
     FOREIGN KEY(employee_id) REFERENCES employee(employee_id),
     FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
@@ -160,20 +160,20 @@ INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_p
     VALUES ("Carlos", "Garcia", "cgarcia@yahoo.com", "802-332-8124");
 INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_phone)
     VALUES("John", "Anderson", "janderson@outlook.com", "422-470-1238");
-
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+ 
+INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
     VALUES (1, 3, 1, "01/20/22", 21000.75);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
     VALUES (2, 8, 1, "03/20/22", 27000.25);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
     VALUES (3, 3, 2, "04/20/22", 30000.50);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
     VALUES (4, 6, 4, "03/25/22", 27000.75);
-INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
    VALUES (5, 8, 2, "03/20/22", 28000.25);
 
 -- Test insert trigger on sale table with employee that is not Salesperson
--- INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_amount)
+-- INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
 --    VALUES (6, 1, 2, "03/20/22", 28000.25);
 
 -- Test update trigger on sale table with employee that is not Salesperson

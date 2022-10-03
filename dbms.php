@@ -630,7 +630,7 @@ if(empty($_SESSION['employeeID'])){
                                             <label for="orderBySale">Select order to display results:</label>
                                         </div>
                                         <div class="form-group mr-2">
-                                            <!--sale_num, vin, employee_id, customer_id, sale_date, sale_amount-->
+                                            <!--sale_num, vin, employee_id, customer_id, sale_date, sale_cost-->
                                             <select class="form-control" name="orderBySale" id="orderBySale">
                                                 <option value="sale_num asc" selected>Sale # Ascending</option>
                                                 <option value="sale_num desc">Sale # Descending</option>                                                
@@ -642,8 +642,8 @@ if(empty($_SESSION['employeeID'])){
                                                 <option value="customer_id desc">Customer ID Descending</option>
                                                 <option value="sale_date asc">Sale Date Ascending</option>
                                                 <option value="sale_date desc">Sale Date Descending</option>
-                                                <option value="sale_amount asc">Sale Amount Ascending</option>
-                                                <option value="sale_amount desc">Sale Amount Descending</option>                                                
+                                                <option value="sale_cost asc">Sale Cost Ascending</option>
+                                                <option value="sale_cost desc">Sale Cost Descending</option>                                                
                                             </select>
                                         </div>
                                         <div class ="form-group">
@@ -684,12 +684,7 @@ if(empty($_SESSION['employeeID'])){
                 </div>
             </div> 
         <script>
-            $(document).ready(function(){
-                // Unnecessary code in Bootstrap 4
-//                $("ul.nav-tabs a").click(function (e) {
-//                    e.preventDefault();  
-//                    $(this).tab('show');
-//                });
+            $(document).ready(function(){                
                 $("#customerTabs li:nth-child(5) a").on("click", function() {
                     console.log("refreshing table");
                     showAllCustomers();
