@@ -41,3 +41,24 @@ function insertVehicle() {
     });
 }
 
+function updateFillVehicle() {
+    $.ajax({
+        url: 'vehicle/updateFillVehicle.php',
+        type: 'POST',
+        data: $('#updateFillVehicleForm').serialize(),
+        dataType: 'json'
+    }).done(function(data, textStatus, jqXHR) {
+        // vin, model_name, model_year, brand_name, color, msrp
+        $("#updateVehicleVIN").val(data.vin);
+        $("#updateVehicleModel").val(data.model);
+        $("#updateVehicleYear").val(data.year);
+        $("#updateVehicleBrand").val(data.brand);
+        $("#updateVehicleColor").val(data.color);
+        $("#updateVehicleMSRP").val(data.msrp);
+        $("#updateFillVehicleForm").trigger("reset");
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText);
+        $("#updateFillVehicleForm").trigger("reset");                    
+    });
+}
+

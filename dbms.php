@@ -496,12 +496,12 @@ if(empty($_SESSION['employeeID'])){
                                             <div class="form-group">
                                                 <label for="insertVehicleColor">Vehicle Color:</label>
                                                 <input class="form-control" type="text" placeholder="Enter vehicle color" id="insertVehicleColor" name="vehicleColor" required />
-                                                <div class="valid-feedback">Phone number looks good.</div>
+                                                <div class="valid-feedback">Vehicle color looks good.</div>
                                                 <div class="invalid-feedback">Please enter the vehicle's color.</div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="insertVehicleMSRP">Vehicle MSRP:</label>
-                                                <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9][0-9])?$" value="$" placeholder="Enter MSRP" id="insertVehicleMSRP" name="vehicleMSRP" required />
+                                                <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="insertVehicleMSRP" name="vehicleMSRP" required />
                                                 <div class="valid-feedback">Vehicle MSRP looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
                                             </div>
@@ -513,6 +513,66 @@ if(empty($_SESSION['employeeID'])){
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab2">
                                     <h5>Update a vehicle's info:</h5>
+                                        
+                                    <div class="card">
+                                        <div class="card-header h5">Update a vehicle:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillVehicleForm" onsubmit="updateFillVehicle()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateFillVehicleVIN">Fill in other values in the form below by entering a employee ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateFillVehicleVIN" name="vehicleVIN" required />
+                                                    <div class="valid-feedback">Vehicle ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID #.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Fill Record Details" />
+                                                </div>
+                                            </form>
+                                            <form class="was-validated" action="javascript:void(0)" method="post" id="updateVehicleForm" onsubmit="updateVehicle()">
+
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateVehicleVIN">Vehicle ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="updateVehicleVIN" name="vehicleVIN" required />
+                                                    <div class="valid-feedback">Vehicle ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID #.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="updateVehicleModel">Vehicle Model Name:</label>
+                                                    <input type="text" class="form-control" placeholder="Enter first name" id="updateVehicleModel" name="vehicleModel" required />
+                                                    <div class="valid-feedback">Model name looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the vehicle's model name.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="updateVehicleYear">Vehicle Model Year:</label>
+                                                    <input class="form-control" type="number" min="1900" max="2099" step="1" placeholder="Enter model year" id="updateVehicleYear" name="vehicleYear" required />
+                                                    <div class="valid-feedback">Vehicle year looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid model year.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="updateVehicleBrand">Vehicle Brand Name:</label>
+                                                    <input class="form-control" type="text" placeholder="Enter brand name" id="updateVehicleBrand" name="vehicleBrand" required />
+                                                    <div class="valid-feedback">Brand name looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the vehicle's brand name.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="updateVehicleColor">Vehicle Color:</label>
+                                                    <input class="form-control" type="text" placeholder="Enter vehicle color" id="updateVehicleColor" name="vehicleColor" required />
+                                                    <div class="valid-feedback">Phone number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the vehicle's color.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="updateVehicleMSRP">Vehicle MSRP:</label>
+                                                    <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="updateVehicleMSRP" name="vehicleMSRP" required />
+                                                    <div class="valid-feedback">Vehicle MSRP looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
+                                                </div>
+                                                <div class ="form-group">
+                                                    <input type="submit" class="btn btn-primary" name="update" value="Update Vehicle" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab3">
                                     <h5>Delete a vehicle:</h5>
