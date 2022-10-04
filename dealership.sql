@@ -140,15 +140,17 @@ INSERT INTO employee (dealership_id, employee_fname, employee_lname, employee_em
     VALUES (1, "Jordan", "Brown", "jordanbrown@qc.com", "443-907-2134", "Salesperson", "1234");
 
 INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
-    VALUES ("Accord", 2022, "Honda", "white", 19000);
+    VALUES ("Accord", 2022, "Honda", "White", 19000);
 INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
-    VALUES ("Civic", 2021, "Honda", "black", 25000);
+    VALUES ("Civic", 2021, "Honda", "Black", 25000);
 INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
-    VALUES ("Camry", 2022, "Toyota", "blue", 28000);
+    VALUES ("Camry", 2022, "Toyota", "Blue", 28000);
 INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
-    VALUES ("Highlander", 2021, "Toyota", "green", 35000);
+    VALUES ("Highlander", 2021, "Toyota", "Green", 35000);
 INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
-    VALUES ("Highlander", 2022, "Toyota", "red", 36000);
+    VALUES ("Highlander", 2022, "Toyota", "Red", 36000);
+INSERT INTO vehicle (model_name, model_year, brand_name, color, msrp)
+    VALUES ("Tundra", 2020, "Toyota", "Red", 25000);
 
 INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_phone)
     VALUES ("Ron", "Baker", "rbaker@gmail.com", "902-113-2981");

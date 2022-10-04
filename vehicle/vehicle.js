@@ -80,3 +80,20 @@ function updateVehicle() {
         alert(jqXHR.responseText);
     });
 }
+function deleteVehicle() {
+    $.ajax({
+        method: "POST",
+        url: "vehicle/deleteVehicle.php",
+        data: $('#deleteVehicleForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#deleteVehicleForm").trigger("reset");
+        console.log("Delete status: " + textStatus);
+        console.log(data);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Delete status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

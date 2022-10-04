@@ -571,7 +571,22 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab3">
-                                    <h5>Delete a vehicle:</h5>
+                                    <div class="card">                            
+                                        <div class="card-header h5">Delete a vehicle:</div>                                        
+                                        <div class="card-body">                                            
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="deleteVehicleForm" onsubmit="deleteVehicle()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="deleteVehicleID">Delete a vehicle by entering a vehicle ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="deleteVehicleVIN" name="vin" required />
+                                                    <div class="valid-feedback">Vehicle ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Delete Vehicle" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab4">
                                     <h5>Find a vehicle:</h5>
