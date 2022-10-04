@@ -62,3 +62,21 @@ function updateFillVehicle() {
     });
 }
 
+function updateVehicle() {
+    $.ajax({
+        method: "POST",
+        url: "vehicle/updateVehicle.php",
+        data: $('#updateVehicleForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#updateVehicleForm").trigger("reset");
+        console.log("Update status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Update status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

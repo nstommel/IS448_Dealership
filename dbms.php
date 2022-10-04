@@ -512,8 +512,6 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab2">
-                                    <h5>Update a vehicle's info:</h5>
-                                        
                                     <div class="card">
                                         <div class="card-header h5">Update a vehicle:</div>
                                         <div class="card-body">
@@ -529,7 +527,6 @@ if(empty($_SESSION['employeeID'])){
                                                 </div>
                                             </form>
                                             <form class="was-validated" action="javascript:void(0)" method="post" id="updateVehicleForm" onsubmit="updateVehicle()">
-
                                                 <div class="form-group">
                                                     <label class="font-weight-bold" for="updateVehicleVIN">Vehicle ID #:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="updateVehicleVIN" name="vehicleVIN" required />
@@ -572,7 +569,6 @@ if(empty($_SESSION['employeeID'])){
                                             </form>
                                         </div>
                                     </div>
-                                    
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab3">
                                     <h5>Delete a vehicle:</h5>
