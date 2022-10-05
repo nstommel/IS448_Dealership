@@ -62,25 +62,25 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="card-header h5">Insert a customer:</div>
                                         <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertCustomerForm" onsubmit="insertCustomer()">
                                             <div class="form-group">
-                                                <label for="insertCustomerFname">Customer First Name:</label>
+                                                <label class="font-weight-bold" for="insertCustomerFname">Customer First Name:</label>
                                                 <input type="text" class="form-control" placeholder="Enter first name" id="insertCustomerFname" name="customerFname" required />
                                                 <div class="valid-feedback">First name looks good.</div>
                                                 <div class="invalid-feedback">Please enter the customer's first name.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertCustomerLname">Customer Last Name:</label>
+                                                <label class="font-weight-bold" for="insertCustomerLname">Customer Last Name:</label>
                                                 <input type="text" class="form-control" placeholder="Enter last name" id="insertCustomerLname" name="customerLname" required />
                                                 <div class="valid-feedback">Last name looks good.</div>
                                                 <div class="invalid-feedback">Please enter the customer's last name.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertCustomerEmail">Customer Email:</label>
+                                                <label class="font-weight-bold" for="insertCustomerEmail">Customer Email:</label>
                                                 <input type="email" class="form-control" placeholder="Enter email" id="insertCustomerEmail" name="customerEmail" required />
                                                 <div class="valid-feedback">Email looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertCustomerPhone">Customer Phone:</label>
+                                                <label class="font-weight-bold" for="insertCustomerPhone">Customer Phone:</label>
                                                 <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name="customerPhone" id="insertCustomerPhone" required />
                                                 <div class="valid-feedback">Phone number looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
@@ -109,31 +109,31 @@ if(empty($_SESSION['employeeID'])){
                                             <label class="font-weight-bold" for="updateCustomerForm">Fill in this form to update a customer record:</label>
                                             <form class="was-validated" action="javascript:void(0)" id="updateCustomerForm" onsubmit="updateCustomer()">                                        
                                                 <div class="form-group">
-                                                    <label for="updateCustomerID">Customer ID:</label>
+                                                    <label class="font-weight-bold" for="updateCustomerID">Customer ID:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateCustomerID" name="customerID" required />
                                                     <div class="valid-feedback">Customer ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateCustomerFname">First Name:</label>
+                                                    <label class="font-weight-bold" for="updateCustomerFname">First Name:</label>
                                                     <input class="form-control" type="text" placeholder="Enter first name" id="updateCustomerFname" name="customerFname" required />
                                                     <div class="valid-feedback">First name looks good.</div>
                                                     <div class="invalid-feedback">Please enter the customer's first name.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateCustomerLname">Last Name:</label>
+                                                    <label class="font-weight-bold" for="updateCustomerLname">Last Name:</label>
                                                     <input class="form-control" type="text" placeholder="Enter last name" id="updateCustomerLname" name="customerLname" required />
                                                     <div class="valid-feedback">Last name looks good.</div>
                                                     <div class="invalid-feedback">Please enter the customer's last name.</div>
                                                 </div>
                                                 <div class="form-group">                                                                                                
-                                                    <label for="updateCustomerEmail">Customer Email:</label>
+                                                    <label class="font-weight-bold" for="updateCustomerEmail">Customer Email:</label>
                                                     <input type="email" class="form-control" placeholder="Enter email" id="updateCustomerEmail" name="customerEmail" required />
                                                     <div class="valid-feedback">Email looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid email address.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Phone:</label>
+                                                    <label class="font-weight-bold" for="updateCustomerPhone">Phone:</label>
                                                     <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="updateCustomerPhone" name="customerPhone" required />
                                                     <div class="valid-feedback">Phone number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
@@ -232,31 +232,31 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="invalid-feedback">Please enter a valid integer dealership ID.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeeFname">Employee First Name:</label>
+                                                <label class="font-weight-bold" for="insertEmployeeFname">Employee First Name:</label>
                                                 <input type="text" class="form-control" placeholder="Enter first name" id="insertEmployeeFname" name="employeeFname" required />
                                                 <div class="valid-feedback">First name looks good.</div>
                                                 <div class="invalid-feedback">Please enter the employee's first name.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeeLname">Employee Last Name:</label>
+                                                <label class="font-weight-bold" for="insertEmployeeLname">Employee Last Name:</label>
                                                 <input type="text" class="form-control" placeholder="Enter last name" id="insertEmployeeLname" name="employeeLname" required />
                                                 <div class="valid-feedback">Last name looks good.</div>
                                                 <div class="invalid-feedback">Please enter the employee's last name.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeeEmail">Employee Email:</label>
+                                                <label class="font-weight-bold" for="insertEmployeeEmail">Employee Email:</label>
                                                 <input type="email" class="form-control" placeholder="Enter email" id="insertEmployeeEmail" name="employeeEmail" required />
                                                 <div class="valid-feedback">Email looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeePhone">Employee Phone:</label>
+                                                <label class="font-weight-bold" for="insertEmployeePhone">Employee Phone:</label>
                                                 <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" name="employeePhone" id="insertEmployeePhone" required />
                                                 <div class="valid-feedback">Phone number looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeeRoleRadio">Employee Role:</label>
+                                                <label class="font-weight-bold" for="insertEmployeeRoleRadio">Employee Role:</label>
                                                 <div id="insertEmployeeRoleRadio">                                                    
                                                     <div class="form-check form-check-inline">
                                                         <input type="radio" class="form-check-input" checked="checked" value="Manager" id="insertEmployeeRoleManager" name="employeeRole" />
@@ -273,7 +273,7 @@ if(empty($_SESSION['employeeID'])){
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertEmployeePassword">Password</label>
+                                                <label class="font-weight-bold" for="insertEmployeePassword">Password</label>
                                                 <input class="form-control" type="password" placeholder="Enter password" id="insertEmployeepassword" name="employeePassword" required />
                                                 <div class="valid-feedback">Password looks good.</div>
                                                 <div class="invalid-feedback">Please enter the new employee's password.</div>
@@ -296,7 +296,7 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="card-body">
                                             <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillEmployeeForm" onsubmit="updateFillEmployee()">
                                                 <div class="form-group">
-                                                    <label class="font-weight-bold" for="updateFillEmployeeID">Fill in other values in the form below by entering a employee ID #:</label>
+                                                    <label class="font-weight-bold" for="updateFillEmployeeID">Fill in other values in the form below by entering an employee ID #:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateFillEmployeeID" name="employeeID" required />
                                                     <div class="valid-feedback">Employee ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
@@ -309,7 +309,7 @@ if(empty($_SESSION['employeeID'])){
                                             <!--<form class="was-validated" method="post" action="employee/updateEmployee.php" id="updateEmployeeForm">-->
                                             <form class="was-validated" action="javascript:void(0)" id="updateEmployeeForm" onsubmit="updateEmployee()">
                                                 <div class="form-group">
-                                                    <label for="updateEmployeeID">Employee ID:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeeID">Employee ID:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateEmployeeID" name="employeeID" required />
                                                     <div class="valid-feedback">Employee ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
@@ -321,31 +321,31 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="invalid-feedback">Please enter a valid integer dealership ID.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateEmployeeFname">First Name:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeeFname">First Name:</label>
                                                     <input class="form-control" type="text" placeholder="Enter first name" id="updateEmployeeFname" name="employeeFname" required />
                                                     <div class="valid-feedback">First name looks good.</div>
                                                     <div class="invalid-feedback">Please enter the employee's first name.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateEmployeeLname">Last Name:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeeLname">Last Name:</label>
                                                     <input class="form-control" type="text" placeholder="Enter last name" id="updateEmployeeLname" name="employeeLname" required />
                                                     <div class="valid-feedback">Last name looks good.</div>
                                                     <div class="invalid-feedback">Please enter the employee's last name.</div>
                                                 </div>
                                                 <div class="form-group">                                                                                                
-                                                    <label for="updateEmployeeEmail">Employee Email:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeeEmail">Employee Email:</label>
                                                     <input type="email" class="form-control" placeholder="Enter email" id="updateEmployeeEmail" name="employeeEmail" required />
                                                     <div class="valid-feedback">Email looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid email address.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Employee Phone:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeePhone">Employee Phone:</label>
                                                     <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="updateEmployeePhone" name="employeePhone" required />
                                                     <div class="valid-feedback">Phone number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
                                                 </div>                                                                                            
                                                 <div class="form-group">
-                                                    <label for="updateEmployeeRoleRadio">Employee Role:</label>
+                                                    <label class="font-weight-bold" for="updateEmployeeRoleRadio">Employee Role:</label>
                                                     <div id="updateEmployeeRoleRadio">                                                    
                                                         <div class="form-check form-check-inline">
                                                             <input type="radio" class="form-check-input" checked="checked" value="Manager" id="updateEmployeeRoleManager" name="employeeRole" />
@@ -376,7 +376,7 @@ if(empty($_SESSION['employeeID'])){
                                             <form class="form-inline mt-2" method="post" action="javascript:void(0)" id="updatePasswordForm" onsubmit="updatePassword()">
                                                 <!--<form class="form-inline mt-2" method="post" action="employee/updatePassword.php" id="updatePasswordForm">-->
                                                 <div class="form-group mr-2">
-                                                    <label for="updatePassword">Password:</label>
+                                                    <label for="updatePasswordInput">Password:</label>
                                                 </div>
                                                 <div class="form-group mr-2">
                                                     <input class="form-control" type="password" placeholder="Enter new password:" id="updatePasswordInput" name="password" required />                                                        
@@ -476,31 +476,31 @@ if(empty($_SESSION['employeeID'])){
                                         <!--<form class="card-body was-validated" action="vehicle/insertVehicle.php" method="post" id="insertVehicleForm">-->
                                         <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertVehicleForm" onsubmit="insertVehicle()">
                                             <div class="form-group">
-                                                <label for="insertVehicleModel">Vehicle Model Name:</label>
-                                                <input type="text" class="form-control" placeholder="Enter first name" id="insertVehicleModel" name="vehicleModel" required />
-                                                <div class="valid-feedback">Model name looks good.</div>
-                                                <div class="invalid-feedback">Please enter the vehicle's model name.</div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="insertVehicleYear">Vehicle Model Year:</label>
-                                                <input class="form-control" type="number" min="1900" max="2099" step="1" placeholder="Enter model year" id="insertVehicleYear" name="vehicleYear" required />
-                                                <div class="valid-feedback">Vehicle year looks good.</div>
-                                                <div class="invalid-feedback">Please enter a valid model year.</div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="insertVehicleBrand">Vehicle Brand Name:</label>
+                                                <label class="font-weight-bold" for="insertVehicleBrand">Vehicle Brand Name:</label>
                                                 <input class="form-control" type="text" placeholder="Enter brand name" id="insertVehicleBrand" name="vehicleBrand" required />
                                                 <div class="valid-feedback">Brand name looks good.</div>
                                                 <div class="invalid-feedback">Please enter the vehicle's brand name.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertVehicleColor">Vehicle Color:</label>
+                                                <label class="font-weight-bold" for="insertVehicleModel">Vehicle Model Name:</label>
+                                                <input type="text" class="form-control" placeholder="Enter first name" id="insertVehicleModel" name="vehicleModel" required />
+                                                <div class="valid-feedback">Model name looks good.</div>
+                                                <div class="invalid-feedback">Please enter the vehicle's model name.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertVehicleYear">Vehicle Model Year:</label>
+                                                <input class="form-control" type="number" min="1900" max="2099" step="1" placeholder="Enter model year" id="insertVehicleYear" name="vehicleYear" required />
+                                                <div class="valid-feedback">Vehicle year looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid model year.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertVehicleColor">Vehicle Color:</label>
                                                 <input class="form-control" type="text" placeholder="Enter vehicle color" id="insertVehicleColor" name="vehicleColor" required />
                                                 <div class="valid-feedback">Vehicle color looks good.</div>
                                                 <div class="invalid-feedback">Please enter the vehicle's color.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="insertVehicleMSRP">Vehicle MSRP:</label>
+                                                <label class="font-weight-bold" for="insertVehicleMSRP">Vehicle MSRP:</label>
                                                 <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="insertVehicleMSRP" name="vehicleMSRP" required />
                                                 <div class="valid-feedback">Vehicle MSRP looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
@@ -534,31 +534,31 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="invalid-feedback">Please enter a valid integer vehicle ID #.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateVehicleModel">Vehicle Model Name:</label>
-                                                    <input type="text" class="form-control" placeholder="Enter first name" id="updateVehicleModel" name="vehicleModel" required />
-                                                    <div class="valid-feedback">Model name looks good.</div>
-                                                    <div class="invalid-feedback">Please enter the vehicle's model name.</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="updateVehicleYear">Vehicle Model Year:</label>
-                                                    <input class="form-control" type="number" min="1900" max="2099" step="1" placeholder="Enter model year" id="updateVehicleYear" name="vehicleYear" required />
-                                                    <div class="valid-feedback">Vehicle year looks good.</div>
-                                                    <div class="invalid-feedback">Please enter a valid model year.</div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="updateVehicleBrand">Vehicle Brand Name:</label>
+                                                    <label class="font-weight-bold" for="updateVehicleBrand">Vehicle Brand Name:</label>
                                                     <input class="form-control" type="text" placeholder="Enter brand name" id="updateVehicleBrand" name="vehicleBrand" required />
                                                     <div class="valid-feedback">Brand name looks good.</div>
                                                     <div class="invalid-feedback">Please enter the vehicle's brand name.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateVehicleColor">Vehicle Color:</label>
+                                                    <label class="font-weight-bold" for="updateVehicleModel">Vehicle Model Name:</label>
+                                                    <input type="text" class="form-control" placeholder="Enter first name" id="updateVehicleModel" name="vehicleModel" required />
+                                                    <div class="valid-feedback">Model name looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the vehicle's model name.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateVehicleYear">Vehicle Model Year:</label>
+                                                    <input class="form-control" type="number" min="1900" max="2099" step="1" placeholder="Enter model year" id="updateVehicleYear" name="vehicleYear" required />
+                                                    <div class="valid-feedback">Vehicle year looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid model year.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateVehicleColor">Vehicle Color:</label>
                                                     <input class="form-control" type="text" placeholder="Enter vehicle color" id="updateVehicleColor" name="vehicleColor" required />
                                                     <div class="valid-feedback">Phone number looks good.</div>
                                                     <div class="invalid-feedback">Please enter the vehicle's color.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="updateVehicleMSRP">Vehicle MSRP:</label>
+                                                    <label class="font-weight-bold" for="updateVehicleMSRP">Vehicle MSRP:</label>
                                                     <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="updateVehicleMSRP" name="vehicleMSRP" required />
                                                     <div class="valid-feedback">Vehicle MSRP looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
@@ -576,7 +576,7 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="card-body">                                            
                                             <form class="was-validated" method="post" action="javascript:void(0)" id="deleteVehicleForm" onsubmit="deleteVehicle()">
                                                 <div class="form-group">
-                                                    <label class="font-weight-bold" for="deleteVehicleID">Delete a vehicle by entering a vehicle ID #:</label>
+                                                    <label class="font-weight-bold" for="deleteVehicleVIN">Delete a vehicle by entering a vehicle ID #:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="deleteVehicleVIN" name="vin" required />
                                                     <div class="valid-feedback">Vehicle ID # looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
@@ -589,7 +589,23 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab4">
-                                    <h5>Find a vehicle:</h5>
+                                    <div class="card">
+                                        <div class="card-header h5">Find a vehicle:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="findVehicleVINForm" onsubmit="findVehicleVIN()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="findVehicleVINInput">Find a vehicle by entering a vehicle ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="findVehicleVINInput" name="vin" required />
+                                                    <div class="valid-feedback">VIN looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Find vehicle by VIN" />
+                                                </div>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                    <div id="findVehicleTable"></div>
                                 </div>
                                 <div class="tab-pane fade" id="vehicleTab5">                                                                        
                                     <form class="form-inline" id="vehicleOrderBy" action="javascript:void(0)" onsubmit="showAllVehicles()">                                    
@@ -599,13 +615,13 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="form-group mr-2">
                                             <select class="form-control" name="orderByVehicle" id="orderByVehicle">
                                                 <option value="vin asc" selected>Vehicle ID Number Ascending</option>
-                                                <option value="vin desc">Vehicle ID Number Descending</option>                                                
+                                                <option value="vin desc">Vehicle ID Number Descending</option>
+                                                <option value="brand_name collate nocase asc">Brand Name Ascending</option>
+                                                <option value="brand_name collate nocase desc">Brand Name Descending</option>
                                                 <option value="model_name collate nocase asc">Model Name Ascending</option>
                                                 <option value="model_name collate nocase desc">Model Name Descending</option>
                                                 <option value="model_year asc">Model Year Ascending</option>
                                                 <option value="model_year desc">Model Year Descending</option>
-                                                <option value="brand_name collate nocase asc">Brand Name Ascending</option>
-                                                <option value="brand_name collate nocase desc">Brand Name Descending</option>
                                                 <option value="color collate nocase asc">Color Ascending</option>
                                                 <option value="color collate nocase desc">Color Descending</option>
                                                 <option value="msrp asc">MSRP Ascending</option>
