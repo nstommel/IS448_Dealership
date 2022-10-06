@@ -655,7 +655,23 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Delete a dealership:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab4">
-                                    <h5>Find a dealership:</h5>
+                                    <div class="card">
+                                        <div class="card-header h5">Find a dealership:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="findDealershipIDForm" onsubmit="findDealershipID()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="findDealershipIDInput">Find a dealership by entering a dealership ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="findDealershipIDInput" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer dealership ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Find dealership by ID" />
+                                                </div>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                    <div id="findDealershipTable"></div>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab5">                                    
                                     <form class="form-inline" id="dealershipOrderBy" action="javascript:void(0)" onsubmit="showAllDealerships()">                                    

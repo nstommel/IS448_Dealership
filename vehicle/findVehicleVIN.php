@@ -9,7 +9,7 @@ try {
     $result = $stmt->execute();
     if (!$result->fetchArray()) {
         header("HTTP/1.0 500 Internal Server Error");
-        echo "No records match this customer id.";
+        echo "No records match this vehicle id number.";
         $db->close();
         die();
     } else {
