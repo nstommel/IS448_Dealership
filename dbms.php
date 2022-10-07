@@ -720,7 +720,23 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Delete a sales order:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab4">
-                                    <h5>Find a sales order:</h5>
+                                    <div class="card">
+                                        <div class="card-header h5">Find a sales order:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="findSaleNumForm" onsubmit="findSaleNum()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="findSaleNumInput">Find a sale by entering a sale order number:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter sale #" id="findSaleNumInput" name="saleNum" required />
+                                                    <div class="valid-feedback">Sale order number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer sale order number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Find sale by sale number" />
+                                                </div>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                    <div id="findSaleTable"></div>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab5">
                                     <form class="form-inline" id="saleOrderBy" action="javascript:void(0)" onsubmit="showAllSales()">
