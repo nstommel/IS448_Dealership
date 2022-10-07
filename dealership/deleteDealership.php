@@ -25,7 +25,7 @@ try {
     } else {
         header("HTTP/1.0 500 Internal Server Error");
         echo "Error: You do not have sufficient permissions as a " . $_SESSION["employeeRole"] . 
-             " to delete a dealership in the database.";
+             " to delete a dealership from the database.";
         $db->close();
         die();
     }
@@ -33,7 +33,7 @@ try {
     //Set error header for HTTP error appropriately
     header("HTTP/1.0 500 Internal Server Error");
     if (str_contains($e->getMessage(), "FOREIGN KEY constraint failed")) {
-        echo "Dealership has associated employees, sales or services, deleting aborted.\n"
+        echo "Dealership has associated employees, sales, or services, deleting aborted.\n"
                 . "Please remove these records before attempting deletion.";
     } else {
         echo "A different database error occurred: " . $e->getMessage();

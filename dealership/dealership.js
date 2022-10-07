@@ -48,3 +48,40 @@ function findDealershipID() {
         alert(jqXHR.responseText);
     });
 }
+
+function deleteDealership() {
+    $.ajax({
+        method: "POST",
+        url: "dealership/deleteDealership.php",
+        data: $('#deleteDealershipForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#deleteDealershipForm").trigger("reset");
+        console.log("Delete status: " + textStatus);
+        console.log(data);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Delete status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}
+
+function insertDealership() {
+    $.ajax({
+        method: "POST",
+        url: "dealership/insertDealership.php",
+        data: $('#insertDealershipForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#insertDealershipForm").trigger("reset");
+        console.log("Insertion status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Insertion status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

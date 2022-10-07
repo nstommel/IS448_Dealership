@@ -85,8 +85,8 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="valid-feedback">Phone number looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="submit" class="btn btn-primary" value="Insert">
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-primary" value="Insert Customer">
                                             </div>
                                         </form>
                                     </div>
@@ -138,8 +138,8 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Phone number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
                                                 </div>                                            
-                                                <div class="form-group">
-                                                    <input type="submit" class="btn btn-primary" value="Update customer record">
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" class="btn btn-primary" value="Update Customer">
                                                 </div>
                                             </form>
                                         </div>
@@ -156,7 +156,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Customer ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Delete Customer" />
                                                 </div>
                                             </form>
@@ -174,7 +174,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Customer ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find customer by ID" />
                                                 </div>
                                             </form>
@@ -278,9 +278,8 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="valid-feedback">Password looks good.</div>
                                                 <div class="invalid-feedback">Please enter the new employee's password.</div>
                                             </div>
-                                            
-                                            <div class="form-group">
-                                                <input type="submit" class="btn btn-primary" value="Insert">
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-primary" value="Insert Employee">
                                             </div>
                                         </form>
                                     </div>
@@ -361,8 +360,8 @@ if(empty($_SESSION['employeeID'])){
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input type="submit" class="btn btn-primary" value="Update employee record">
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" class="btn btn-primary" value="Update Employee">
                                                 </div>
                                             </form>
                                         </div>
@@ -405,7 +404,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Employee ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Delete Employee" />
                                                 </div>
                                             </form>
@@ -424,7 +423,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Employee ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find employee by ID" />
                                                 </div>
                                             </form>
@@ -505,7 +504,7 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="valid-feedback">Vehicle MSRP looks good.</div>
                                                 <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
                                             </div>
-                                            <div class ="form-group">
+                                            <div class ="form-group mb-0">
                                                 <input type="submit" class="btn btn-primary" name="insert" value="Insert Vehicle" />
                                             </div>
                                         </form>
@@ -563,7 +562,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Vehicle MSRP looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
                                                 </div>
-                                                <div class ="form-group">
+                                                <div class ="form-group mb-0">
                                                     <input type="submit" class="btn btn-primary" name="update" value="Update Vehicle" />
                                                 </div>
                                             </form>
@@ -581,7 +580,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Vehicle ID # looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Delete Vehicle" />
                                                 </div>
                                             </form>
@@ -599,7 +598,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">VIN looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find vehicle by VIN" />
                                                 </div>
                                             </form>
@@ -646,7 +645,46 @@ if(empty($_SESSION['employeeID'])){
                             </ul>
                             <div class="tab-content p-4 bg-light border" id="dealershipTabPanels">
                                 <div class="tab-pane fade show active" id="dealershipTab1">
-                                    <h5>Insert a dealership:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager to insert a dealership!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Insert a dealership:</div>
+                                        <!--dealership_name, dealership_city, dealership_state, dealership_phone-->
+                                        <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertDealershipForm" onsubmit="insertDealership()">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertDealershipName">Dealership Name:</label>
+                                                <input type="text" class="form-control" placeholder="Enter dealership name" id="insertDealershipName" name="name" required />
+                                                <div class="valid-feedback">Dealership name looks good.</div>
+                                                <div class="invalid-feedback">Please enter the dealership's name.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertDealershipCity">Dealership City:</label>
+                                                <input type="text" class="form-control" placeholder="Enter city" id="insertDealershipCity" name="city" required />
+                                                <div class="valid-feedback">City name looks good.</div>
+                                                <div class="invalid-feedback">Please enter the city name.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertDealershipState">Dealership State:</label>
+                                                <!--Use regex pattern to make sure entered state abbreviation is in valid set-->
+                                                <input type="text" class="form-control" placeholder="Enter state abbreviation" id="insertDealershipState" name="state" 
+                                                       pattern="A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]" required />
+                                                <div class="valid-feedback">State abbreviation looks good.</div>
+                                                <div class="invalid-feedback">Please enter the two-letter all-caps state abbreviation.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertDealershipPhone">Phone:</label>
+                                                <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="insertDealershipPhone" name="phone" required />
+                                                <div class="valid-feedback">Phone number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
+                                            </div>  
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-primary" value="Insert Dealership">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab2">
                                     <h5>Update a dealership's info:</h5>
@@ -667,8 +705,8 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Dealership ID # looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer dealership ID number.</div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input class="btn btn-primary" type="submit" value="Delete dealership" />
+                                                <div class="form-group mb-0">
+                                                    <input class="btn btn-primary" type="submit" value="Delete Dealership" />
                                                 </div>
                                             </form>
                                         </div>
@@ -685,7 +723,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Dealership ID looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer dealership ID number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find dealership by ID" />
                                                 </div>
                                             </form>
@@ -750,7 +788,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Sale order number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer sale order number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find sale by number" />
                                                 </div>
                                             </form>
@@ -819,7 +857,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="valid-feedback">Service order number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer service order number.</div>
                                                 </div>
-                                                <div class="form-group">
+                                                <div class="form-group mb-0">
                                                     <input class="btn btn-primary" type="submit" value="Find service by number" />
                                                 </div>
                                             </form>
@@ -898,23 +936,6 @@ if(empty($_SESSION['employeeID'])){
                 });
             });
             
-            function deleteDealership() {
-                $.ajax({
-                    method: "POST",
-                    url: "dealership/deleteDealership.php",
-                    data: $('#deleteDealershipForm').serialize()
-                }).done(function(data, textStatus, jqXHR) {
-                    $("#deleteDealershipForm").trigger("reset");
-                    console.log("Delete status: " + textStatus);
-                    console.log(data);
-                    alert(data);                        
-                }).fail(function(jqXHR, textStatus, errorThrown) {
-                    console.log("Delete status: " + textStatus);
-                    console.log(jqXHR.responseText);
-                    console.log(errorThrown);
-                    alert(jqXHR.responseText);
-                });
-            }
         </script>
     </body>
 </html>
