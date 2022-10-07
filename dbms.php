@@ -731,7 +731,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="invalid-feedback">Please enter a valid integer sale order number.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="btn btn-primary" type="submit" value="Find sale by sale number" />
+                                                    <input class="btn btn-primary" type="submit" value="Find sale by number" />
                                                 </div>
                                             </form>
                                         </div>                                        
@@ -789,7 +789,23 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Delete a service job:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab4">
-                                    <h5>Find a service job:</h5>
+                                    <div class="card">
+                                        <div class="card-header h5">Find a service order:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="findServiceNumForm" onsubmit="findServiceNum()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="findServiceNumInput">Find a service by entering a service order number:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter service #" id="findServiceNumInput" name="serviceNum" required />
+                                                    <div class="valid-feedback">Service order number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer service order number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Find service by number" />
+                                                </div>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                    <div id="findServiceTable"></div>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab5">                                    
                                     <form class="form-inline" id="serviceOrderBy" action="javascript:void(0)" onsubmit="showAllServices()">
