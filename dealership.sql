@@ -112,11 +112,13 @@ BEGIN
 END;
 
 INSERT INTO dealership (dealership_name, dealership_city, dealership_state, dealership_phone)
-    VALUES ("Quality Cars of Maryland", "Baltimore", "Maryland", "855-902-1024");
+    VALUES ("Quality Cars of Maryland", "Baltimore", "MD", "855-902-1024");
 INSERT INTO dealership (dealership_name, dealership_city, dealership_state, dealership_phone)
-    VALUES ("Quality Cars of Delaware", "Dover", "Delware", "522-872-1832");
+    VALUES ("Quality Cars of Delaware", "Dover", "DE", "522-872-1832");
 INSERT INTO dealership (dealership_name, dealership_city, dealership_state, dealership_phone)
-    VALUES ("Quality Cars of Pennsylvania", "Pittsburgh", "Pennsylvania", "772-804-7721");
+    VALUES ("Quality Cars of Pennsylvania", "Pittsburgh", "PA", "772-804-7721");
+INSERT INTO dealership (dealership_name, dealership_city, dealership_state, dealership_phone)
+    VALUES ("Quality Cars of Virginia", "Richmond", "VA", "310-878-9021");
 
 INSERT INTO employee (dealership_id, employee_fname, employee_lname, employee_email, employee_phone, employee_role, employee_password)
     VALUES (1, "Bob", "Thompson", "bt@qc.com", "443-492-7034", "Manager", "1234");

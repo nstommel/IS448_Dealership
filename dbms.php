@@ -652,7 +652,27 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Update a dealership's info:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab3">
-                                    <h5>Delete a dealership:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager to delete a dealership!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Delete a dealership:</div>                      
+                                        <div class="card-body">                                            
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="deleteDealershipForm" onsubmit="deleteDealership()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="deleteDealershipID">Delete a dealership by entering a dealership ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="deleteDealershipID" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer dealership ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Delete dealership" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab4">
                                     <div class="card">
@@ -878,7 +898,23 @@ if(empty($_SESSION['employeeID'])){
                 });
             });
             
-            
+            function deleteDealership() {
+                $.ajax({
+                    method: "POST",
+                    url: "dealership/deleteDealership.php",
+                    data: $('#deleteDealershipForm').serialize()
+                }).done(function(data, textStatus, jqXHR) {
+                    $("#deleteDealershipForm").trigger("reset");
+                    console.log("Delete status: " + textStatus);
+                    console.log(data);
+                    alert(data);                        
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.log("Delete status: " + textStatus);
+                    console.log(jqXHR.responseText);
+                    console.log(errorThrown);
+                    alert(jqXHR.responseText);
+                });
+            }
         </script>
     </body>
 </html>
