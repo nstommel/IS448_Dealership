@@ -52,7 +52,7 @@ function findSaleNum() {
 function deleteSale() {
     $.ajax({
         method: "POST",
-        url: "sale/deleteSaleNum.php",
+        url: "sale/deleteSale.php",
         data: $('#deleteSaleForm').serialize()
     }).done(function(data, textStatus, jqXHR) {
         $("#deleteSaleForm").trigger("reset");
