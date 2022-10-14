@@ -687,7 +687,64 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab2">
-                                    <h5>Update a dealership's info:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager to update a dealership!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Update a dealership:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillDealershipForm" onsubmit="updateFillDealership()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateFillDealershipID">Fill in other values in the form below by entering a dealership ID #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateFillDealershipID" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer dealership ID #.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Fill Record Details" />
+                                                </div>
+                                            </form>
+                                            <form class="was-validated" action="javascript:void(0)" method="post" id="updateDealershipForm" onsubmit="updateDealership()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateDealershipID">Dealership ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateDealershipID" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID # looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer dealership ID #.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateDealershipName">Dealership Name:</label>
+                                                    <input type="text" class="form-control" placeholder="Enter dealership name" id="updateDealershipName" name="name" required />
+                                                    <div class="valid-feedback">Dealership name looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the dealership's name.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateDealershipCity">Dealership City:</label>
+                                                    <input type="text" class="form-control" placeholder="Enter city" id="updateDealershipCity" name="city" required />
+                                                    <div class="valid-feedback">City name looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the city name.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateDealershipState">Dealership State:</label>
+                                                    <!--Use regex pattern to make sure entered state abbreviation is in valid set-->
+                                                    <input type="text" class="form-control" placeholder="Enter state abbreviation" id="updateDealershipState" name="state" 
+                                                           pattern="A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY]" required />
+                                                    <div class="valid-feedback">State abbreviation looks good.</div>
+                                                    <div class="invalid-feedback">Please enter the two-letter all-caps state abbreviation.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateDealershipPhone">Phone:</label>
+                                                    <input type="tel" placeholder="Enter phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" id="updateDealershipPhone" name="phone" required />
+                                                    <div class="valid-feedback">Phone number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid phone number in the format XXX-XXX-XXXX.</div>
+                                                </div>  
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" class="btn btn-primary" value="Update Dealership">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="dealershipTab3">
                                     <?php

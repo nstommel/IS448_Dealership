@@ -85,3 +85,42 @@ function insertDealership() {
         alert(jqXHR.responseText);
     });
 }
+
+function updateFillDealership() {
+    $.ajax({
+        url: 'dealership/updateFillDealership.php',
+        type: 'POST',
+        data: $('#updateFillDealershipForm').serialize(),
+        dataType: 'json'
+    }).done(function(data, textStatus, jqXHR) {
+        // dealership_id, dealership_name, dealership_city, dealership_state, dealership_phone
+        $("#updateDealershipID").val(data.id);
+        $("#updateDealershipName").val(data.name);
+        $("#updateDealershipCity").val(data.city);
+        $("#updateDealershipState").val(data.state);
+        $("#updateDealershipPhone").val(data.phone);
+        $("#updateFillDealershipForm").trigger("reset");
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText);
+        $("#updateFillDealershipForm").trigger("reset");                    
+    });
+}
+
+function updateDealership() {
+    $.ajax({
+        method: "POST",
+        url: "dealership/updateDealership.php",
+        data: $('#updateDealershipForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#updateDealershipForm").trigger("reset");
+        console.log("Update status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Update status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

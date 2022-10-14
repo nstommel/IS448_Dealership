@@ -23,16 +23,15 @@ try {
     } else {
         $result->reset();
         // vin, model_name, model_year, brand_name, color, msrp
-        $queryStr = 'UPDATE vehicle SET vin = :vin, model_name = :model, model_year = :year, ' . 
-                    'brand_name = :brand, color = :color, msrp = :msrp WHERE vin = :vin2';
+        $queryStr = 'UPDATE vehicle SET model_name = :model, model_year = :year, ' . 
+                    'brand_name = :brand, color = :color, msrp = :msrp WHERE vin = :vin';
         $stmt = $db->prepare($queryStr);
-        $stmt->bindValue(':vin', $vin, SQLITE3_INTEGER);
-        $stmt->bindValue(':vin2', $vin, SQLITE3_INTEGER);
         $stmt->bindValue(':model', $model, SQLITE3_TEXT);
         $stmt->bindValue(':year', $year, SQLITE3_INTEGER);
         $stmt->bindValue(':brand', $brand, SQLITE3_TEXT);
         $stmt->bindValue(':color', $color, SQLITE3_TEXT);
         $stmt->bindValue(':msrp', $msrp, SQLITE3_FLOAT);
+        $stmt->bindValue(':vin', $vin, SQLITE3_INTEGER);
         $stmt->execute();
         echo "Successfully updated record in database!";
         $db->close();
