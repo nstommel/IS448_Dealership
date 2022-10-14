@@ -826,13 +826,34 @@ if(empty($_SESSION['employeeID'])){
                             </ul>
                             <div class="tab-content p-4 bg-light border" id="saleTabPanels">
                                 <div class="tab-pane fade show active" id="saleTab1">
-                                    <h5>Insert a sales order:</h5>
+                                    <h5>Insert a sale order:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab2">
-                                    <h5>Update a sales order's info:</h5>
+                                    <h5>Update a sale order's info:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab3">
-                                    <h5>Delete a sales order:</h5>
+                                    <h5>Delete a sale order:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Salesperson") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a salesperon to delete a sale order!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Delete a sale order:</div>                      
+                                        <div class="card-body">                                            
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="deleteSaleForm" onsubmit="deleteSale()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="deleteSaleNum">Delete a dealership by entering a sale order #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="deleteSaleNum" name="saleNum" required />
+                                                    <div class="valid-feedback">Sale order number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer sale order number.</div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <input class="btn btn-primary" type="submit" value="Delete Sale" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab4">
                                     <div class="card">

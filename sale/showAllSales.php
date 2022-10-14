@@ -9,10 +9,8 @@ try {
     $querystr = "SELECT * FROM sale ORDER BY " . $orderby;
     $result = $db->query($querystr);
     if (!$result->fetchArray()) {
-        header("HTTP/1.0 500 Internal Server Error");
-        echo "No records found.";
+        echo "<h3 class='mt-4 ml-4'>No records found.</h3>";
         $db->close();
-        die();
     } else {
         $result->reset();
         // sale_num, vin, employee_id, customer_id, sale_date, sale_cost
@@ -46,7 +44,6 @@ try {
                 </div>
             </div>";
         $db->close();
-        exit();
     }
 } catch (Exception $e) {
     // Set error header appropriately

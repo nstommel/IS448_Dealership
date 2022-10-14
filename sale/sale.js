@@ -48,3 +48,21 @@ function findSaleNum() {
         alert(jqXHR.responseText);
     });
 }
+
+function deleteSale() {
+    $.ajax({
+        method: "POST",
+        url: "sale/deleteSaleNum.php",
+        data: $('#deleteSaleForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#deleteSaleForm").trigger("reset");
+        console.log("Delete status: " + textStatus);
+        console.log(data);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Delete status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}
