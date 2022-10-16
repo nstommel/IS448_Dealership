@@ -49,3 +49,20 @@ function findServiceNum() {
     });
 }
 
+function deleteService() {
+    $.ajax({
+        method: "POST",
+        url: "service/deleteService.php",
+        data: $('#deleteServiceForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#deleteServiceForm").trigger("reset");
+        console.log("Delete status: " + textStatus);
+        console.log(data);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Delete status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

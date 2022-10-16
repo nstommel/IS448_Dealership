@@ -891,7 +891,7 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="card-body">                                            
                                             <form class="was-validated" method="post" action="javascript:void(0)" id="deleteSaleForm" onsubmit="deleteSale()">
                                                 <div class="form-group">
-                                                    <label class="font-weight-bold" for="deleteSaleNum">Delete a dealership by entering a sale order #:</label>
+                                                    <label class="font-weight-bold" for="deleteSaleNum">Delete a sale by entering a sale order #:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter sale #" id="deleteSaleNum" name="saleNum" required />
                                                     <div class="valid-feedback">Sale order number looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer sale order number.</div>
@@ -970,7 +970,27 @@ if(empty($_SESSION['employeeID'])){
                                     <h5>Update a service job's info:</h5>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab3">
-                                    <h5>Delete a service job:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Mechanic") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a mechanic to delete a service job!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Delete a service job:</div>
+                                        <div class="card-body">                                            
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="deleteServiceForm" onsubmit="deleteService()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="deleteServiceNum">Delete a service by entering a service job #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter service #" id="deleteServiceNum" name="serviceNum" required />
+                                                    <div class="valid-feedback">Service job number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer service job number.</div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <input class="btn btn-primary" type="submit" value="Delete Service" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab4">
                                     <div class="card">
