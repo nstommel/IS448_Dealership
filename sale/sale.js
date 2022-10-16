@@ -66,3 +66,22 @@ function deleteSale() {
         alert(jqXHR.responseText);
     });
 }
+
+function insertSale() {
+    $.ajax({
+        method: "POST",
+        url: "sale/insertSale.php",
+        data: $('#insertSaleForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#insertSaleForm").trigger("reset");
+        console.log("Insertion status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Insertion status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

@@ -826,7 +826,56 @@ if(empty($_SESSION['employeeID'])){
                             </ul>
                             <div class="tab-content p-4 bg-light border" id="saleTabPanels">
                                 <div class="tab-pane fade show active" id="saleTab1">
-                                    <h5>Insert a sale order:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Salesperson") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a salesperon to insert a sale order!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Insert a sale order:</div>
+                                        <!--vin, employee_id, customer_id, dealership_id, sale_date, sale_cost-->
+                                        <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertSaleForm" onsubmit="insertSale()">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleVIN">VIN:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="insertSaleVIN" name="VIN" required />
+                                                <div class="valid-feedback">Vehicle ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleEmployeeID">Employee ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter employee ID" id="insertSaleEmployeeID" name="employeeID" required />
+                                                <div class="valid-feedback">Employee ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleCustomerID">Customer ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter customer ID" id="insertSaleCustomerID" name="customerID" required />
+                                                <div class="valid-feedback">Customer ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleDealershipID">Dealership ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter Dealership ID" id="insertSaleDealershipID" name="dealershipID" required />
+                                                <div class="valid-feedback">Dealership ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid dealership ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleDate">Sale Date:</label>
+                                                <input class="form-control" type="date" pattern="\d{4}-\d{2}-\d{2}" id="insertSaleDate" name="date" required />
+                                                <div class="valid-feedback">Sale date looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid sale date.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertSaleCost">Sale Cost:</label>
+                                                <input class="form-control" type="text" pattern="^\$\d+(\.\d{2})?$" value="$" placeholder="Enter MSRP" id="insertSaleCost" name="cost" required />
+                                                <div class="valid-feedback">Sale cost looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid sale cost in dollars.</div>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-primary" value="Insert Sale">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab2">
                                     <h5>Update a sale order's info:</h5>

@@ -72,13 +72,13 @@ CREATE TABLE sale (
 -- This trigger prevents sales from being associated with employees without the
 -- Salesperson role.
 CREATE TRIGGER validate_sale_role_insert AFTER INSERT ON sale
-WHEN (SELECT employee_role FROM employee NATURAL JOIN sale WHERE sale.sale_num = NEW.sale_num) <> "Salesperson"
+WHEN (SELECT employee_role FROM employee, sale WHERE employee.employee_id = sale.employee_id AND sale.sale_num = NEW.sale_num) <> "Salesperson"
 BEGIN
     SELECT RAISE(ABORT, "Employee on sale is not a saleperson.");
 END;
 
 CREATE TRIGGER validate_sale_role_update AFTER UPDATE ON sale
-WHEN (SELECT employee_role FROM employee NATURAL JOIN sale WHERE sale.sale_num = OLD.sale_num) <> "Salesperson"
+WHEN (SELECT employee_role FROM employee, sale WHERE employee.employee_id = sale.employee_id AND sale.sale_num = OLD.sale_num) <> "Salesperson"
 BEGIN
     SELECT RAISE(ABORT, "Employee on sale is not a saleperson.");
 END;
@@ -168,19 +168,19 @@ INSERT INTO customer (customer_fname, customer_lname, customer_email, customer_p
 -- For sales, the location of the sale is determined by the dealership id
 
 INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
-    VALUES (1, 3, 1, 2, "01/20/22", 21000.75);
+    VALUES (1, 3, 1, 2, "2022-01-20", 21000.75);
 INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
-    VALUES (2, 8, 1, 3, "03/20/22", 27000.25);
+    VALUES (2, 8, 1, 3, "2022-03-20", 27000.25);
 INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
-    VALUES (3, 3, 2, 1, "04/20/22", 30000.50);
+    VALUES (3, 3, 2, 1, "2022-04-20", 30000.50);
 INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
-    VALUES (4, 6, 4, 3, "03/25/22", 27000.75);
+    VALUES (4, 6, 4, 3, "2022-03-25", 27000.75);
 INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
-    VALUES (5, 8, 2, 3, "03/20/22", 28000.25);
+    VALUES (5, 8, 2, 3, "2022-03-20", 28000.25);
 
 -- Test insert trigger on sale table with employee that is not Salesperson
--- INSERT INTO sale (vin, employee_id, customer_id, sale_date, sale_cost)
---    VALUES (6, 1, 2, "03/20/22", 28000.25);
+-- INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)
+--    VALUES (6, 1, 2, 3, "2022-03-20", 28000.25);
 
 -- Test update trigger on sale table with employee that is not Salesperson
 -- UPDATE sale SET employee_id = 1 WHERE sale_num = 3;
@@ -193,15 +193,15 @@ INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_
 -- because a customer could take the car to different service locations after purchase.
 
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
-    VALUES (1, 4, 1, 1, "05/03/22", 200.00);
+    VALUES (1, 4, 1, 1, "2022-05-03", 200.00);
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
-    VALUES (2, 2, 1, 2, "05/03/22", 500.00);
+    VALUES (2, 2, 1, 2, "2022-05-03", 500.00);
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
-    VALUES (3, 7, 2, 2, "06/21/22", 300.00);
+    VALUES (3, 7, 2, 2, "2022-06-21", 300.00);
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
-    VALUES (4, 4, 4, 1, "07/30/22", 600.00);
+    VALUES (4, 4, 4, 1, "2022-07-30", 600.00);
 INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
-    VALUES (4, 2, 4, 3, "12/21/22", 250.00);
+    VALUES (4, 2, 4, 3, "2022-12-21", 250.00);
 
 -- Test insert trigger on service table with employee that is not a Mechanic
 -- INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)
