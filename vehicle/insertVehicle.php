@@ -3,11 +3,10 @@ $db = new SQLite3("../dealership.db");
 $db->exec("PRAGMA foreign_keys = ON");
 
 $model = trim($_POST["vehicleModel"]);
-$year = intval($_POST["vehicleYear"]);
+$year = $_POST["vehicleYear"];
 $brand = trim($_POST["vehicleBrand"]);
 $color = trim($_POST["vehicleColor"]);
-//Trim the dollar sign off of the vehicle MSRP input before insertion.
-$msrp = floatval(str_replace('$', '', trim($_POST["vehicleMSRP"])));
+$msrp = $_POST["vehicleMSRP"];
 
 $db->enableExceptions(true);
 try {
@@ -17,10 +16,10 @@ try {
                 'VALUES(:model, :year, :brand, :color, :msrp)';
     $stmt = $db->prepare($queryStr);
     $stmt->bindValue(':model', $model, SQLITE3_TEXT);
-    $stmt->bindValue(':year', $year, SQLITE3_INTEGER);
+    $stmt->bindValue(':year', intval($year), SQLITE3_INTEGER);
     $stmt->bindValue(':brand', $brand, SQLITE3_TEXT);
     $stmt->bindValue(':color', $color, SQLITE3_TEXT);
-    $stmt->bindValue(':msrp', $msrp, SQLITE3_FLOAT);
+    $stmt->bindValue(':msrp', floatval($msrp), SQLITE3_FLOAT);
     $stmt->execute();
     echo "Successfully inserted into database, assigned vehicle ID #: " . $db->lastinsertRowID();
     $db->close();

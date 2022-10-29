@@ -17,7 +17,7 @@ try {
         // vin, model_name, model_year, brand_name, color, msrp
         $response = array("vin" => $row["vin"], "model" => $row["model_name"],
                           "year" => $row["model_year"], "brand" => $row["brand_name"], 
-                          "color" => $row["color"], "msrp" => '$' . number_format($row["msrp"], 2, ".", ""));
+                          "color" => $row["color"], "msrp" => number_format($row["msrp"], 2, ".", ""));
         echo json_encode($response);
         $db->close();
         exit();

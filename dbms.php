@@ -499,10 +499,15 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="invalid-feedback">Please enter the vehicle's color.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="font-weight-bold" for="insertVehicleMSRP">Vehicle MSRP:</label>
-                                                <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="insertVehicleMSRP" name="vehicleMSRP" required />
-                                                <div class="valid-feedback">Vehicle MSRP looks good.</div>
-                                                <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
+                                                <label class="font-weight-bold" for="insertVehicleMSRPGroup">Vehicle MSRP:</label>
+                                                <div class="input-group" id="insertVehicleMSRPGroup">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter MSRP" id="insertVehicleMSRP" name="vehicleMSRP" required />
+                                                    <div class="valid-feedback">Vehicle MSRP looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
+                                                </div>
                                             </div>
                                             <div class ="form-group mb-0">
                                                 <input type="submit" class="btn btn-primary" name="insert" value="Insert Vehicle" />
@@ -557,10 +562,15 @@ if(empty($_SESSION['employeeID'])){
                                                     <div class="invalid-feedback">Please enter the vehicle's color.</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="font-weight-bold" for="updateVehicleMSRP">Vehicle MSRP:</label>
-                                                    <input class="form-control" type="text" pattern="^\$[0-9]+(\.[0-9]{2})?$" value="$" placeholder="Enter MSRP" id="updateVehicleMSRP" name="vehicleMSRP" required />
-                                                    <div class="valid-feedback">Vehicle MSRP looks good.</div>
-                                                    <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
+                                                    <label class="font-weight-bold" for="updateVehicleMSRPGroup">Vehicle MSRP:</label>
+                                                    <div class="input-group" id="updateVehicleMSRPGroup">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">$</span>
+                                                        </div>
+                                                        <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter MSRP" id="updateVehicleMSRP" name="vehicleMSRP" required />
+                                                        <div class="valid-feedback">Vehicle MSRP looks good.</div>
+                                                        <div class="invalid-feedback">Please enter a valid MSRP in dollars.</div>
+                                                    </div>
                                                 </div>
                                                 <div class ="form-group mb-0">
                                                     <input type="submit" class="btn btn-primary" name="update" value="Update Vehicle" />
@@ -866,12 +876,12 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="invalid-feedback">Please enter a valid sale date.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="font-weight-bold" for="insertSaleCost">Sale Cost:</label>
-                                                <div class="input-group" id="insertSaleCost">
+                                                <label class="font-weight-bold" for="insertSaleCostGroup">Sale Cost:</label>
+                                                <div class="input-group" id="insertSaleCostGroup">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">$</span>
                                                     </div>
-                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" name="cost" required />
+                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" id="insertSaleCost" name="cost" required />
                                                     <div class="valid-feedback">Sale cost looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid sale cost in dollars.</div>
                                                 </div>
@@ -1009,12 +1019,12 @@ if(empty($_SESSION['employeeID'])){
                                                 <div class="invalid-feedback">Please enter a valid service date.</div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="font-weight-bold" for="insertServiceCost">Service Cost:</label>
-                                                <div class="input-group" id="insertServiceCost">
+                                                <label class="font-weight-bold" for="insertServiceCostGroup">Service Cost:</label>
+                                                <div class="input-group" id="insertServiceCostGroup">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text">$</span>
                                                     </div>
-                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" name="cost" required />
+                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" id="insertServiceCost" name="cost" required />
                                                     <div class="valid-feedback">Service cost looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid service cost in dollars.</div>
                                                 </div>
