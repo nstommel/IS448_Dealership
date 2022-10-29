@@ -867,9 +867,14 @@ if(empty($_SESSION['employeeID'])){
                                             </div>
                                             <div class="form-group">
                                                 <label class="font-weight-bold" for="insertSaleCost">Sale Cost:</label>
-                                                <input class="form-control" type="text" pattern="^\$\d+(\.\d{2})?$" value="$" placeholder="Enter MSRP" id="insertSaleCost" name="cost" required />
-                                                <div class="valid-feedback">Sale cost looks good.</div>
-                                                <div class="invalid-feedback">Please enter a valid sale cost in dollars.</div>
+                                                <div class="input-group" id="insertSaleCost">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" name="cost" required />
+                                                    <div class="valid-feedback">Sale cost looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid sale cost in dollars.</div>
+                                                </div>
                                             </div>
                                             <div class="form-group mb-0">
                                                 <input type="submit" class="btn btn-primary" value="Insert Sale">
@@ -964,7 +969,61 @@ if(empty($_SESSION['employeeID'])){
                             </ul>
                             <div class="tab-content p-4 bg-light border" id="serviceTabPanels">
                                 <div class="tab-pane fade show active" id="serviceTab1">
-                                    <h5>Insert a service job:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Mechanic") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a mechanic to insert a service job!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Insert a service job:</div>
+                                        <!--vin, employee_id, customer_id, dealership_id, service_date, service_cost-->
+                                        <form class="card-body was-validated" action="javascript:void(0)" method="post" id="insertServiceForm" onsubmit="insertService()">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceVIN">VIN:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="insertServiceVIN" name="VIN" required />
+                                                <div class="valid-feedback">Vehicle ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceEmployeeID">Employee ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter employee ID" id="insertServiceEmployeeID" name="employeeID" required />
+                                                <div class="valid-feedback">Employee ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceCustomerID">Customer ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter customer ID" id="insertServiceCustomerID" name="customerID" required />
+                                                <div class="valid-feedback">Customer ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceDealershipID">Dealership ID:</label>
+                                                <input class="form-control" type="number" min="1" step="1" placeholder="Enter Dealership ID" id="insertServiceDealershipID" name="dealershipID" required />
+                                                <div class="valid-feedback">Dealership ID number looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid dealership ID number.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceDate">Service Date:</label>
+                                                <input class="form-control" type="date" pattern="\d{4}-\d{2}-\d{2}" id="insertServiceDate" name="date" required />
+                                                <div class="valid-feedback">Service date looks good.</div>
+                                                <div class="invalid-feedback">Please enter a valid service date.</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold" for="insertServiceCost">Service Cost:</label>
+                                                <div class="input-group" id="insertServiceCost">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                    </div>
+                                                    <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" name="cost" required />
+                                                    <div class="valid-feedback">Service cost looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid service cost in dollars.</div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-0">
+                                                <input type="submit" class="btn btn-primary" value="Insert Service">
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab2">
                                     <h5>Update a service job's info:</h5>

@@ -66,3 +66,22 @@ function deleteService() {
         alert(jqXHR.responseText);
     });
 }
+
+function insertService() {
+    $.ajax({
+        method: "POST",
+        url: "service/insertService.php",
+        data: $('#insertServiceForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#insertServiceForm").trigger("reset");
+        console.log("Insertion status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Insertion status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

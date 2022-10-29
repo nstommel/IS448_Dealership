@@ -14,11 +14,11 @@ $cost = $_POST["cost"];
 
 $db->enableExceptions(true);
 try {
-    if ($_SESSION["employeeRole"] === "Manager" || $_SESSION["employeeRole"] === "Salesperson") {
+    if ($_SESSION["employeeRole"] === "Manager" || $_SESSION["employeeRole"] === "Mechanic") {
         
         // Attempt insert into database
-        // vin, employee_id, customer_id, dealership_id, sale_date, sale_cost
-        $queryStr = 'INSERT INTO sale (vin, employee_id, customer_id, dealership_id, sale_date, sale_cost)' . 
+        // vin, employee_id, customer_id, dealership_id, service_date, service_cost
+        $queryStr = 'INSERT INTO service (vin, employee_id, customer_id, dealership_id, service_date, service_cost)' . 
                     'VALUES (:vin, :employeeID, :customerID, :dealershipID, :date, :cost)';
         $stmt = $db->prepare($queryStr);
         $stmt->bindValue(':vin', intval($vin), SQLITE3_INTEGER);
@@ -28,21 +28,16 @@ try {
         $stmt->bindValue(':date', $date, SQLITE3_TEXT);
         $stmt->bindValue(':cost', floatval($cost), SQLITE3_FLOAT);
         $stmt->execute();
-        echo "Successfully inserted into database, assigned sale ID #: " . $db->lastinsertRowID();
+        echo "Successfully inserted into database, assigned service ID #: " . $db->lastinsertRowID();
         $db->close();
     } else {
         header("HTTP/1.0 500 Internal Server Error");
         echo "Error: You do not have sufficient permissions as a " . $_SESSION["employeeRole"] . 
-             " to insert a sale order into the database.";
+             " to insert a service job into the database.";
         $db->close();
         die();
     }
 } catch (Exception $e) {
-    // Catch error and message.
-    $message = $e->getMessage();
-    if(str_contains($message, "UNIQUE constraint failed")) {
-        echo "This vehicle already has an associated sale order.\n";
-    }
     // Print out all fields that may have caused the error when executing insert operation.
     $stmt = $db->prepare('SELECT * FROM vehicle WHERE vin = :vin');
     $stmt->bindValue(':vin', intval($vin), SQLITE3_INTEGER);
@@ -74,5 +69,3 @@ try {
     header("HTTP/1.0 500 Internal Server Error");
     die();
 }
-
-
