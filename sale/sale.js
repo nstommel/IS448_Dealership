@@ -85,3 +85,45 @@ function insertSale() {
         alert(jqXHR.responseText);
     });
 }
+
+function updateFillSale() {
+    $.ajax({
+        url: 'sale/updateFillSale.php',
+        type: 'POST',
+        data: $('#updateFillSaleForm').serialize(),
+        dataType: 'json'
+    }).done(function(data, textStatus, jqXHR) {
+        // vin, employee_id, customer_id, dealership_id, service_date, service_cost
+        console.log(data);
+        $("#updateSaleNum").val(data.saleNum);
+        $("#updateSaleVIN").val(data.vin);
+        $("#updateSaleEmployeeID").val(data.employeeID);
+        $("#updateSaleCustomerID").val(data.customerID);
+        $("#updateSaleDealershipID").val(data.dealershipID);
+        $("#updateSaleDate").val(data.date);
+        $("#updateSaleCost").val(data.cost);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText);
+        $("#updateFillSaleForm").trigger("reset");                    
+    });
+}
+
+function updateSale() {
+    $.ajax({
+        method: "POST",
+        url: "sale/updateSale.php",
+        data: $('#updateSaleForm').serialize()
+    }).done(function(data, textStatus, jqXHR) {
+        $("#updateFillSaleForm").trigger("reset");
+        $("#updateSaleForm").trigger("reset");
+        console.log("Update status: " + textStatus);
+        console.log(data);
+        //console.log(jqXHR.responseText);
+        alert(data);                        
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.log("Update status: " + textStatus);
+        console.log(jqXHR.responseText);
+        console.log(errorThrown);
+        alert(jqXHR.responseText);
+    });
+}

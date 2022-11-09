@@ -530,6 +530,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <input class="btn btn-primary" type="submit" value="Fill Record Details" />
                                                 </div>
                                             </form>
+                                            <label class="font-weight-bold" for="updateVehicleForm">Fill in this form to update a vehicle record:</label>
                                             <form class="was-validated" action="javascript:void(0)" method="post" id="updateVehicleForm" onsubmit="updateVehicle()">
                                                 <div class="form-group">
                                                     <label class="font-weight-bold" for="updateVehicleVIN">Vehicle ID #:</label>
@@ -716,6 +717,7 @@ if(empty($_SESSION['employeeID'])){
                                                     <input class="btn btn-primary" type="submit" value="Fill Record Details" />
                                                 </div>
                                             </form>
+                                            <label class="font-weight-bold" for="updateDealershipForm">Fill in this form to update a dealership record:</label>
                                             <form class="was-validated" action="javascript:void(0)" method="post" id="updateDealershipForm" onsubmit="updateDealership()">
                                                 <div class="form-group">
                                                     <label class="font-weight-bold" for="updateDealershipID">Dealership ID:</label>
@@ -893,7 +895,81 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab2">
-                                    <h5>Update a sale order's info:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Salesperson") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a salesperson to update a sale order!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Update a sale order:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillSaleForm" onsubmit="updateFillSale()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateFillSaleNum">Fill in other values in the form below by entering a sale #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter sale #" id="updateFillSaleNum" name="saleNum" required />
+                                                    <div class="valid-feedback">Sale number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer sale number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Fill Record Details" />
+                                                </div>
+                                            </form>
+                                            <!--sale_num, vin, employee_id, customer_id, dealership_id, sale_date, sale_cost-->
+                                            <label class="font-weight-bold" for="updateSaleForm">Fill in this form to update a sale record:</label>
+                                            <form class="was-validated" action="javascript:void(0)" method="post" id="updateSaleForm" onsubmit="updateSale()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleNum">Sale #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter sale #" id="updateSaleNum" name="saleNum" required />
+                                                    <div class="valid-feedback">Sale number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer sale number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleVIN">VIN:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="updateSaleVIN" name="VIN" required />
+                                                    <div class="valid-feedback">Vehicle ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleEmployeeID">Employee ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter employee ID" id="updateSaleEmployeeID" name="employeeID" required />
+                                                    <div class="valid-feedback">Employee ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleCustomerID">Customer ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter customer ID" id="updateSaleCustomerID" name="customerID" required />
+                                                    <div class="valid-feedback">Customer ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleDealershipID">Dealership ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter Dealership ID" id="updateSaleDealershipID" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid dealership ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleDate">Sale Date:</label>
+                                                    <input class="form-control" type="date" pattern="\d{4}-\d{2}-\d{2}" id="updateSaleDate" name="date" required />
+                                                    <div class="valid-feedback">Sale date looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid sale date.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateSaleCostGroup">Sale Cost:</label>
+                                                    <div class="input-group" id="updateSaleCostGroup">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">$</span>
+                                                        </div>
+                                                        <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" id="updateSaleCost" name="cost" required />
+                                                        <div class="valid-feedback">Sale cost looks good.</div>
+                                                        <div class="invalid-feedback">Please enter a valid sale cost in dollars.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" class="btn btn-primary" value="Update Sale">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="saleTab3">
                                     <?php
@@ -1056,6 +1132,7 @@ if(empty($_SESSION['employeeID'])){
                                                 </div>
                                             </form>
                                             <!--service_num, vin, employee_id, customer_id, dealership_id, service_date, service_cost-->
+                                            <label class="font-weight-bold" for="updateServiceForm">Fill in this form to update a service record:</label>
                                             <form class="was-validated" action="javascript:void(0)" method="post" id="updateServiceForm" onsubmit="updateService()">
                                                 <div class="form-group">
                                                     <label class="font-weight-bold" for="updateServiceNum">Service #:</label>
