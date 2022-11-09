@@ -521,7 +521,7 @@ if(empty($_SESSION['employeeID'])){
                                         <div class="card-body">
                                             <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillVehicleForm" onsubmit="updateFillVehicle()">
                                                 <div class="form-group">
-                                                    <label class="font-weight-bold" for="updateFillVehicleVIN">Fill in other values in the form below by entering a employee ID #:</label>
+                                                    <label class="font-weight-bold" for="updateFillVehicleVIN">Fill in other values in the form below by entering a vehicle ID #:</label>
                                                     <input class="form-control" type="number" min="1" step="1" placeholder="Enter ID #" id="updateFillVehicleVIN" name="vehicleVIN" required />
                                                     <div class="valid-feedback">Vehicle ID # looks good.</div>
                                                     <div class="invalid-feedback">Please enter a valid integer vehicle ID #.</div>
@@ -1036,7 +1036,80 @@ if(empty($_SESSION['employeeID'])){
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab2">
-                                    <h5>Update a service job's info:</h5>
+                                    <?php
+                                        if($_SESSION["employeeRole"] != "Manager" && $_SESSION["employeeRole"] != "Mechanic") {
+                                            echo "<div class='card bg-warning mb-2'><div class='card-body text-white'>You must be a manager or a mechanic to update a service job!</div></div>";
+                                        }
+                                    ?>
+                                    <div class="card">
+                                        <div class="card-header h5">Update a service job:</div>
+                                        <div class="card-body">
+                                            <form class="was-validated" method="post" action="javascript:void(0)" id="updateFillServiceForm" onsubmit="updateFillService()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateFillServiceNum">Fill in other values in the form below by entering a service #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter service #" id="updateFillServiceNum" name="serviceNum" required />
+                                                    <div class="valid-feedback">Service number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer service number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary" type="submit" value="Fill Record Details" />
+                                                </div>
+                                            </form>
+                                            <!--service_num, vin, employee_id, customer_id, dealership_id, service_date, service_cost-->
+                                            <form class="was-validated" action="javascript:void(0)" method="post" id="updateServiceForm" onsubmit="updateService()">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceNum">Service #:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter service #" id="updateServiceNum" name="serviceNum" required />
+                                                    <div class="valid-feedback">Service number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer service number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceVIN">VIN:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter VIN" id="updateServiceVIN" name="VIN" required />
+                                                    <div class="valid-feedback">Vehicle ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer vehicle ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceEmployeeID">Employee ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter employee ID" id="updateServiceEmployeeID" name="employeeID" required />
+                                                    <div class="valid-feedback">Employee ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer employee ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceCustomerID">Customer ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter customer ID" id="updateServiceCustomerID" name="customerID" required />
+                                                    <div class="valid-feedback">Customer ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid integer customer ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceDealershipID">Dealership ID:</label>
+                                                    <input class="form-control" type="number" min="1" step="1" placeholder="Enter Dealership ID" id="updateServiceDealershipID" name="dealershipID" required />
+                                                    <div class="valid-feedback">Dealership ID number looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid dealership ID number.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceDate">Service Date:</label>
+                                                    <input class="form-control" type="date" pattern="\d{4}-\d{2}-\d{2}" id="updateServiceDate" name="date" required />
+                                                    <div class="valid-feedback">Service date looks good.</div>
+                                                    <div class="invalid-feedback">Please enter a valid service date.</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="updateServiceCostGroup">Service Cost:</label>
+                                                    <div class="input-group" id="updateServiceCostGroup">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">$</span>
+                                                        </div>
+                                                        <input class="form-control rounded-right" type="text" pattern="^\d+(\.\d{2})?$" placeholder="Enter Cost" id="updateServiceCost" name="cost" required />
+                                                        <div class="valid-feedback">Service cost looks good.</div>
+                                                        <div class="invalid-feedback">Please enter a valid service cost in dollars.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <input type="submit" class="btn btn-primary" value="Update Service">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="serviceTab3">
                                     <?php
