@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_SESSION['employeeID'])){
-    //Redirect user if they attempt to access this page without loggin in.
+    //Redirect user if they attempt to access this page without logging in.
     echo "Unauthorized user detected, please login. Redirecting in 3 seconds.";
     header("refresh:3; url=loginPortal.php" );    
 } else {
@@ -273,7 +273,7 @@ if(empty($_SESSION['employeeID'])){
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="font-weight-bold" for="insertEmployeePassword">Password</label>
+                                                <label class="font-weight-bold" for="insertEmployeePassword">Password:</label>
                                                 <input class="form-control" type="password" placeholder="Enter password" id="insertEmployeepassword" name="employeePassword" required />
                                                 <div class="valid-feedback">Password looks good.</div>
                                                 <div class="invalid-feedback">Please enter the new employee's password.</div>

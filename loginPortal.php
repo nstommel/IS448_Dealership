@@ -36,13 +36,13 @@
                 <h1 class="text-center">Login Portal</h1>
                 <form class="was-validated" id="loginForm" action="javascript:void(0)" method="post" name="loginForm" onsubmit="login()">
                     <div class="form-group">
-                        <label for="email">Employee Email:</label>
+                        <label class="font-weight-bold" for="email">Employee Email:</label>
                         <input type="email" class="form-control" placeholder="Enter email" id="email" name="email" required />
                         <div class="valid-feedback">Email looks good.</div>
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label class="font-weight-bold" for="password">Password:</label>
                         <input class="form-control" type="password" placeholder="Enter password" id="password" name="password" required />
                         <div class="valid-feedback">Password looks good.</div>
                         <div class="invalid-feedback">Please enter your password.</div>
